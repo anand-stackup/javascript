@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Employee</title>
+    <link rel="icon" type="image/x-icon" href="Img/manager.png">
+
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- sidebar  -->
+        <aside class="side_bar">
+            <div class="side_bar_heading">
+                <h3>Employee</h3>
+                <span> Management</span>
+            </div>
+
+            <hr class="heading_line">
+
+            <div class="side_bar_list">
+                <ul>
+                    <li>
+                        <div class="li_active"></div><a href="#"><span
+                                class="material-symbols-rounded">home</span><span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <div class="li_active"></div><a href="#"><span
+                                class="material-symbols-rounded">equalizer</span><span>Employees</span></a>
+                    </li>
+                    <li>
+                        <div class="li_active"></div><a href="#"><span
+                                class="material-symbols-rounded">person</span><span>My Profile</span></a>
+                    </li>
+                    <li>
+                        <div class="li_active"></div><a href="#"><span
+                                class="material-symbols-rounded">lock</span><span>Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <hr class="heading_line">
+
+            <div class="side_bar_footer">
+                <span>Powered by</span>
+                <img src="Img/logo.png" alt="">
+            </div>
+        </aside>
+        <!-- main_section  -->
+        <section class="main_section">
+            <div class="main_header">
+                <div class="main_header_heading">
+                    <p>Dashboard / Employees</p>
+                    <h2>Employees</h2>
+                </div>
+
+                <div class="right" id="right">
+                    <div class="main_header_search">
+                        <div class="main_header_search_searchbar" id="searchBar">
+                            <span class="material-symbols-rounded">search</span>
+                            <input type="text" placeholder="Search" id="search" onkeyup="Search()">
+                        </div>
+                        <span class="notification_icon material-symbols-rounded">notifications</span>
+                        <div class="main_img">
+                            <img src="Img/img1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Alert -->
+            <div class="alert hide" id="alert">
+                <span class="material-symbols-outlined" id="alertIcon"></span>
+                <span class="msg" id="alertMsg"></span>
+            </div>
+
+            <!-- table  -->
+            <div class="table">
+                <div class="table_header">
+                    <div class="table_header_description">
+                        <h3>Employees List</h3>
+                        <select name="number" id="select">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                        </select>
+                        <span>of 10</span>
+                    </div>
+                    <div class="button">
+                        <button class="butn" id="openButton" onclick="openAddEmployee()">
+                            Add Employee
+                        </button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th><select>
+                                    <option>Sl.No</option>
+                                </select></th>
+                            <th><select>
+                                    <option>Name</option>
+                                </select></th>
+                            <th><select>
+                                    <option>Email</option>
+                                </select></th>
+                            <th><select>
+                                    <option>Phone</option>
+                                </select></th>
+                            <th><select>
+                                    <option>Gender</option>
+                                </select></th>
+                            <th><select>
+                                    <option>DOB</option>
+                                </select></th>
+                            <th><select>
+                                    <option>Country</option>
+                                </select></th>
+                            <th><button></button></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="employeeList">
+                        <!-- <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td><button><span class="material-symbols-rounded">
+                                        more_horiz
+                                    </span></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td>
+                                <div class="dropdown" id="dropDown">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <span class="material-symbols-rounded"> more_horiz </span>
+                                    </button>
+                                    <ul class="dropdown-details" id="dropdownDetails">
+                                        <li><a href="#" id="viewButton"><span class="material-symbols-outlined">
+                                                    visibility
+                                                </span>View Details</a></li>
+                                        <li><a href="#" id="editButton"><span class="material-symbols-outlined">
+                                                    edit
+                                                </span> Edit </a></li>
+                                        <li><a href="#" id="deleteButton"><span class="material-symbols-outlined">
+                                                    delete
+                                                </span> Delete </a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td><button><span class="material-symbols-rounded">
+                                        more_horiz
+                                    </span></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td><button><span class="material-symbols-rounded">
+                                        more_horiz
+                                    </span></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td><button><span class="material-symbols-rounded">
+                                        more_horiz
+                                    </span></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>#01</td>
+                            <td><span class="icon"><img src="Img/icon.png" alt="">Mr. Michael Johnson</span></td>
+                            <td>michaeljohnson@example.com</td>
+                            <td>5551234567</td>
+                            <td>Male</td>
+                            <td>10 December 1985</td>
+                            <td>USA</td>
+                            <td><button><span class="material-symbols-rounded">
+                                        more_horiz
+                                    </span></button></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- pagination  -->
+            <div class="row">
+                <div class="col">
+                    <nav class="pagination" id="pagination">
+                        <!-- <ul class="pagination" id="paginationContainer"> -->
+                        <!-- <li class="page-item">
+                                <a class="page-link lnk" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li> -->
+                        <!-- <li class="page-item pagination-button" id="prev-button">
+                                <a class="page-link lnk" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li> -->
+                        <!-- <li class="page-item"><a class="page-link lnk" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link lnk" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link lnk" href="#">3</a></li> -->
+                        <!-- <li class="page-item" id="next-button">
+                                <a class="page-link lnk" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>  -->
+                        <!-- <li class="page-item">
+                                <a class="page-link lnk" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li> -->
+                        <!-- </ul> -->
+                    </nav>
+
+                </div>
+            </div>
+
+            <!-- main_footer  -->
+            <div class="main_footer">
+                <div class="rights">
+                    <span> 2023 All Rights Reserved. Stackup</span>
+                </div>
+                <div class="terms" id="terms">
+                    <span>Terms of Use </span>
+                    <span>Privacy Policy</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ............  -->
+
+    <div class="modal" id="addEmployeeModal">
+        <form class="main_modal" id="addEmployeeForm">
+            <div class="row modal_heading">
+                <div class="col-11">
+                    <h4>Add Employee</h4>
+                </div>
+                <div class="col-1 modal_heading_btn">
+                    <button type="button" class="modal_btn" id="closeButton" onclick="closeAddEmployee()">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col img_row" id="imgUpload">
+                    <label for="fileUpload" class="custom-file-upload" id="imgPreview"></label>
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <h6>Upload Image</h6>
+                    <p>PNG, JPG files are allowed</p>
+                    <input type="file" id="fileUpload" />
+                    <!-- </label> -->
+                </div>
+                <div class="on-image-selected" id="imageSection">
+                    <div id="image_preview"></div>
+                    <button class="btn" type="button" onclick="uploadUserImage.click()">Change</button>
+                </div>
+            </div>
+
+            <div class="row select_input">
+                <div class="col-md-4 selection">
+                    <p>Salutation <span>*</span></p>
+                    <select class="form-select" name="salutation" aria-label="Default select example"
+                        id="salutationValue">
+                        <option value="" selected disabled>Select</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Mrs">Mrs</option>
+                    </select>
+                    <label for="salutationValue" id="salutationValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md-4">
+                    <p>First Name <span>*</span></p>
+                    <input type="text" name="firstName" class="form-control" placeholder="First Name"
+                        aria-label="First name" id="firstNameValue">
+                    <label for="firstNameValue" id="firstNameValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md-4">
+                    <p>Last Name <span>*</span></p>
+                    <input type="text" name="lastName" class="form-control" placeholder="Last name "
+                        aria-label="First name" id="lastNameValue">
+                    <label for="lastNameValue" id="lastNameValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Email Address <span>*</span></p>
+                    <input type="email" name="email" class="form-control" placeholder="mail@simmmple.com"
+                        aria-label="First name" id="emailValue">
+                    <label for="emailValue" id="emailValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md">
+                    <p>Mobile Number <span>*</span></p>
+                    <input type="number" name="phone" class="form-control" placeholder="enter mobile number"
+                        aria-label="Last name" id="phoneValue">
+                    <label for="phoneValue" id="phoneValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-md personal_info">
+                    <p>Date of Birth <span>*</span></p>
+                    <input type="date" name="dob" class="form-control" aria-label="First name" id="dobValue">
+                    <label for="dobValue" id="dobValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md">
+                    <p>Gender <span>*</span> </p>
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Male">
+                    <label class="form-check-label radio_btn" for="flexRadioDefault2">
+                        Male
+                    </label>
+
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Female">
+                    <label class="form-check-label radio_btn" for="flexRadioDefault1">
+                        Female
+                    </label>
+                    <label for="flexRadioDefault2" id="genderValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Address <span>*</span></p>
+                    <input type="text" name="address" class="form-control" placeholder="enter address"
+                        aria-label="Last name" id="addressValue">
+                    <label for="addressValue" id="addressValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Qualifications<span>*</span></p>
+                    <input type="text" name="qualifications" class="form-control" placeholder="enter qualifications"
+                        aria-label="Last name" id="qualificationsValue">
+                    <label for="qualificationsValue" id="qualificationsValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row select_input">
+                <div class="col-md selection">
+                    <p>Country <span>*</span></p>
+                    <select class="form-select" name="country" aria-label="Default select example" id="countryValue">
+                        <option value="" selected disabled>Select country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Russia">Russia</option>
+                    </select>
+                    <label for="countryValue" id="countryValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md selection">
+                    <p>State <span>*</span></p>
+                    <select class="form-select" name="state" aria-label="Default select example" id="stateValue">
+                        <option value="" selected disabled>Select State</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Tamilnadu">Tamilnadu</option>
+                        <option value="Karnataka">Karnataka</option>
+                    </select>
+                    <label for="stateValue" id="stateValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>City <span>*</span></p>
+                    <input type="text" name="city" class="form-control" placeholder="enter city" aria-label="Last name"
+                        id="cityValue">
+                    <label for="cityValue" id="cityValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md">
+                    <p>Pin/Zip <span>*</span></p>
+                    <input type="text" name="pin" class="form-control" placeholder="enter zip/pin"
+                        aria-label="Last name" id="pinValue">
+                    <label for="pinValue" id="pinValidation" class="validation-label"></label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>User Name <span>*</span></p>
+                    <input type="text" name="userName" class="form-control" placeholder="enter User Name"
+                        aria-label="Last name" id="userNameValue">
+                    <label for="userNameValue" id="userNameValidation" class="validation-label"></label>
+                </div>
+                <div class="col-md">
+                    <p>Password <span>*</span></p>
+                    <input type="password" name="password" class="form-control" placeholder="enter password"
+                        aria-label="Last name" id="passwordValue">
+                    <label for="passwordValue" id="passwordValidation" class="validation-label"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col modal_footer" id="modalFooter">
+                    <button type="button" class="footer_btn empty" id="cancelButton"
+                        onclick="closeAddEmployee()">Cancel</button>
+                    <button type="submit" id="submitButton" class="footer_btn filled">Add Employee</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- ............  -->
+
+    <!-- .....end.......  -->
+
+    <div class="modal" id="editEmployeeModal">
+        <form class="main_modal" id="editEmployeeForm">
+            <div class="row modal_heading">
+                <div class="col-11">
+                    <h4>Edit Employee</h4>
+                </div>
+                <div class="col-1 modal_heading_btn">
+                    <button type="button" class="modal_btn" id="closeEditButton" onclick="closeEditEmployee()">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-2 edit_img_row" id="editImg">
+                    <div class="text-center" id="empimg">
+                        <img src="#" alt="img" id="emp-image">
+                    </div>
+                </div>
+                <div class="col-10 img_btn_box" id="changeImgDiv">
+
+                    <button type="button" class="img_btn" id="changeImg" onclick="updateImage()">
+                        <!-- <input type="file" id="editedImg"> -->
+                        Change
+                    </button>
+                    <input type="file" id="editedImg">
+                </div>
+            </div>
+
+            <div class="row select_input">
+                <div class="col-md-4 selection">
+                    <p>Salutation <span>*</span></p>
+                    <select class="form-select" name="salutation" aria-label="Default select example"
+                        id="salutationValueEdit">
+                        <option selected>Select salutation</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <p>First Name <span>*</span></p>
+                    <input type="text" class="form-control" name="firstName" placeholder="First Name"
+                        aria-label="First name" id="firstNameValueEdit">
+                </div>
+                <div class="col-md-4">
+                    <p>Last Name <span>*</span></p>
+                    <input type="text" class="form-control" name="lastName" placeholder="Last name "
+                        aria-label="First name" id="lastNameValueEdit">
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Email Address <span>*</span></p>
+                    <input type="email" class="form-control" name="email" placeholder="mail@simmmple.com"
+                        aria-label="First name" id="emailValueEdit">
+                </div>
+                <div class="col-md">
+                    <p>Mobile Number <span>*</span></p>
+                    <input type="number" class="form-control" name="phone" placeholder="enter mobile number"
+                        aria-label="Last name" id="phoneValueEdit">
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-md personal_info">
+                    <p>Date of Birth <span>*</span></p>
+                    <input type="date" class="form-control" name="dob" aria-label="First name" id="dobValueEdit">
+
+                </div>
+                <div class="col-md">
+                    <p>Gender <span>*</span> </p>
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault4" value="Male">
+                    <label class="form-check-label radio_btn" for="flexRadioDefault4">
+                        Male
+                    </label>
+
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault3" value="Female">
+                    <label class="form-check-label radio_btn" for="flexRadioDefault3">
+                        Female
+                    </label>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Address <span>*</span></p>
+                    <input type="text" class="form-control" name="address" placeholder="enter address"
+                        aria-label="Last name" id="addressValueEdit">
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>Qualifications<span>*</span></p>
+                    <input type="text" class="form-control" name="qualifications" placeholder="enter qualifications"
+                        aria-label="Last name" id="qualificationsValueEdit">
+                </div>
+            </div>
+
+            <div class="row select_input">
+                <div class="col-md selection">
+                    <p>Country <span>*</span></p>
+                    <select class="form-select" name="country" aria-label="Default select example"
+                        id="countryValueEdit">
+                        <option selected>country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Russia">Russia</option>
+                    </select>
+                </div>
+                <div class="col-md selection">
+                    <p>State <span>*</span></p>
+                    <select class="form-select" name="state" aria-label="Default select example" id="stateValueEdit">
+                        <option selected>state</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Tamilnadu">Tamilnadu</option>
+                        <option value="Karnataka">Karnataka</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>City <span>*</span></p>
+                    <input type="text" class="form-control" name="city" placeholder="enter city" aria-label="Last name"
+                        id="cityValueEdit">
+                </div>
+                <div class="col-md">
+                    <p>Pin/Zip <span>*</span></p>
+                    <input type="text" class="form-control" name="pin" placeholder="enter zip/pin"
+                        aria-label="Last name" id="pinValueEdit">
+                </div>
+            </div>
+
+            <div class="row contact_input">
+                <div class="col-md">
+                    <p>User Name <span>*</span></p>
+                    <input type="text" class="form-control" name="userName" placeholder="enter User Name"
+                        aria-label="Last name" id="userNameValueEdit">
+                </div>
+                <div class="col-md">
+                    <p>Password <span>*</span></p>
+                    <input type="password" class="form-control" name="password" placeholder="enter password"
+                        aria-label="Last name" id="passwordValueEdit">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col modal_footer">
+                    <button type="button" class="footer_btn empty" id="cancelEditButton"
+                        onclick="closeEditEmployee()">Cancel</button>
+                    <button type="button" class="footer_btn filled" id="submitBtn">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- .....end.......  -->
+
+
+    <!-- .....delete.......  -->
+
+    <div class="modal" id="deleteEmployeeModal">
+        <div class="delete_modal" id="deleteEmployeeForm">
+            <div class="row">
+                <div class="col-11">
+                    <h4>Delete Employee</h4>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="modal_btn" id="closeDeleteButton" onclick="closeDelEmployee()">
+                        <span class="material-symbols-outlined">
+                            close
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>Are you sure you want to delete this employee?</p>
+            </div>
+
+            <div class="row">
+                <div class="col delete_buttons" id="deletediv">
+                    <button type="button" class="butn cancel_btn" id="cancelDeleteButton" onclick="closeDelEmployee()">
+                        Cancel
+                    </button>
+                    <button type="button" class="butn delete_btn" id="deleteButton">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- .....delete.......  -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
